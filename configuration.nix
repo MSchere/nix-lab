@@ -2,7 +2,7 @@
   imports = [
     ./hardware.nix
     ./networking.nix
-    ./webserver.nix
+    ./spending-tracker.nix
     ./monero.nix
     ./tiponero.nix
   ];

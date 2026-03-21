@@ -52,7 +52,7 @@ in {
     DATABASE_URL = "postgresql://spending@localhost:5432/spending";
     NEXTAUTH_URL = secrets.nextauthUrl;
     NEXTAUTH_SECRET = secrets.nextauthSecret;
-    ENCRYPTION_KEY = secrets.encryptionKey;
+    ENCRYPTION_KEY = secrets.spendingTrackerEncryptionKey;
     AUTH_TRUST_HOST = "true";
     WISE_ENVIRONMENT = "production";
     WISE_API_TOKEN = secrets.wiseToken;

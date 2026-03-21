@@ -2,11 +2,11 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1773389992,
-        "narHash": "sha256-wvfdLLWJ2I9oEpDd9PfMA8osfIZicoQ5MT1jIwNs9Tk=",
+        "lastModified": 1773646010,
+        "narHash": "sha256-iYrs97hS7p5u4lQzuNWzuALGIOdkPXvjz7bviiBjUu8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c06b4ae3d6599a672a6210b7021d699c351eebda",
+        "rev": "5b2c2d84341b2afb5647081c1386a80d7a8d8605",
         "type": "github"
       },
       "original": {
@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773615498,
-        "narHash": "sha256-dQ1jNW2QJlBDtdMXuH5jh7r6GsAkZxdR4e5V5QJLJaU=",
+        "lastModified": 1773705434,
+        "narHash": "sha256-FkXumj8kDajGhigdGfN0GhSzXszp7ofQIwsMdttSrBc=",
         "owner": "tiponero",
         "repo": "tiponero-core",
-        "rev": "8ba0bb05899eefb2b358281b054319d44b150f78",
+        "rev": "12b4bc643b2d8e48770fdb4add146fec7797f976",
         "type": "github"
       },
       "original": {
