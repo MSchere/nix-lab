@@ -1,9 +1,14 @@
 { config, pkgs, tiponero, ... }:
 
 let
-  secrets = import /etc/nixos/secrets.nix;
   tiponeroPkg = tiponero.packages.${pkgs.system}.default;
 in {
+  age.secrets.tiponero = {
+    file = ./secrets/tiponero.age;
+    owner = "tiponero";
+    mode = "0400";
+  };
+
   users.users.tiponero = {
     isSystemUser = true;
     group = "tiponero";
@@ -22,6 +27,7 @@ in {
       User = "tiponero";
       Group = "tiponero";
       WorkingDirectory = "/var/lib/tiponero";
+      EnvironmentFile = config.age.secrets.tiponero.path;
       ExecStart = "${tiponeroPkg}/bin/tiponero";
       Restart = "on-failure";
       RestartSec = 10;
@@ -30,18 +36,11 @@ in {
       PORT = "3001";
       DATABASE_PATH = "/var/lib/tiponero/tiponero.db";
       MONERO_RPC_URL = "http://127.0.0.1:18083/json_rpc";
-      ENCRYPTION_KEY = secrets.tiponeroEncryptionKey;
       FIAT_CURRENCY = "USD";
       REQUIRED_CONFIRMATIONS = "5";
       BASE_URL = "https://demo.tiponero.org";
     };
   };
 
-  services.nginx.virtualHosts."tiponero" = {
-    listen = [{ addr = "0.0.0.0"; port = 8080; }];
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:3001";
-      proxyWebsockets = true;
-    };
-  };
+  # No nginx vhost — cloudflared connects directly to port 3001
 }

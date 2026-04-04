@@ -10,7 +10,13 @@
     nameservers = [ "192.168.10.176" "10.64.0.1" ];
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 80 3000 8080 18080 18081 18082 18083 ];
+      # 22    = SSH
+      # 80    = spending-tracker (nginx)
+      # 3000  = spending-tracker (direct)
+      # 18080 = monerod P2P (blockchain sync)
+      # Removed: 8080 (tiponero nginx), 18081-18083 (monero RPC — loopback only)
+      # Cloudflare tunnel is outbound-only, no inbound port needed
+      allowedTCPPorts = [ 22 80 3000 18080 ];
     };
   };
   services.openssh = {

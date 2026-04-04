@@ -5,6 +5,7 @@
     ./spending-tracker.nix
     ./monero.nix
     ./tiponero.nix
+    ./cloudflared.nix
   ];
 
   time.timeZone = "Europe/Madrid";
@@ -16,4 +17,3 @@
 
   system.stateVersion = "24.11";
 }
-

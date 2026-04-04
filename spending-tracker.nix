@@ -3,8 +3,13 @@
 let
   appDir = "/var/lib/spending-tracker/app";
   dataDir = "/var/lib/spending-tracker";
-  secrets = import /etc/nixos/secrets.nix;
 in {
+  age.secrets.spending-tracker = {
+    file = ./secrets/spending-tracker.age;
+    owner = "spending-tracker";
+    mode = "0400";
+  };
+
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_16;
@@ -41,25 +46,21 @@ in {
       User = "spending-tracker";
       Group = "spending-tracker";
       WorkingDirectory = appDir;
+      EnvironmentFile = config.age.secrets.spending-tracker.path;
       Restart = "on-failure";
       RestartSec = 10;
     };
-  environment = {
-    NODE_ENV = "production";
-    PORT = "3000";
-    HOSTNAME = "0.0.0.0";
-    NEXT_TELEMETRY_DISABLED = "1";
-    DATABASE_URL = "postgresql://spending@localhost:5432/spending";
-    NEXTAUTH_URL = "http://192.168.10.150";
-    NEXTAUTH_SECRET = secrets.nextauthSecret;
-    ENCRYPTION_KEY = secrets.spendingTrackerEncryptionKey;
-    AUTH_TRUST_HOST = "true";
-    WISE_ENVIRONMENT = "production";
-    WISE_API_TOKEN = secrets.wiseToken;
-    ALPHA_VANTAGE_API_KEY = secrets.alphaVantageKey;
-    INDEXA_API_TOKEN = secrets.indexaToken;
-  };
-  script = ''
+    environment = {
+      NODE_ENV = "production";
+      PORT = "3000";
+      HOSTNAME = "0.0.0.0";
+      NEXT_TELEMETRY_DISABLED = "1";
+      DATABASE_URL = "postgresql://spending@localhost:5432/spending";
+      NEXTAUTH_URL = "http://192.168.10.150";
+      AUTH_TRUST_HOST = "true";
+      WISE_ENVIRONMENT = "production";
+    };
+    script = ''
       cd ${appDir}/.next/standalone
       exec ${pkgs.nodejs_22}/bin/node server.js
     '';
@@ -79,4 +80,3 @@ in {
     };
   };
 }
-
