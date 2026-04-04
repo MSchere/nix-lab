@@ -50,7 +50,7 @@ in {
     HOSTNAME = "0.0.0.0";
     NEXT_TELEMETRY_DISABLED = "1";
     DATABASE_URL = "postgresql://spending@localhost:5432/spending";
-    NEXTAUTH_URL = secrets.nextauthUrl;
+    NEXTAUTH_URL = "http://192.168.10.150";
     NEXTAUTH_SECRET = secrets.nextauthSecret;
     ENCRYPTION_KEY = secrets.spendingTrackerEncryptionKey;
     AUTH_TRUST_HOST = "true";

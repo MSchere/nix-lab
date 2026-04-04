@@ -30,9 +30,10 @@ in {
       PORT = "3001";
       DATABASE_PATH = "/var/lib/tiponero/tiponero.db";
       MONERO_RPC_URL = "http://127.0.0.1:18083/json_rpc";
-      SESSION_SECRET = secrets.tiponeroEncryptionKey;
+      ENCRYPTION_KEY = secrets.tiponeroEncryptionKey;
       FIAT_CURRENCY = "USD";
-      BASE_URL = secrets.tiponeroBaseUrl;
+      REQUIRED_CONFIRMATIONS = "5";
+      BASE_URL = "https://demo.tiponero.org";
     };
   };
 
