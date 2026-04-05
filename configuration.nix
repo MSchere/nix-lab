@@ -6,6 +6,7 @@
     ./monero.nix
     ./tiponero.nix
     ./cloudflared.nix
+    ./landing.nix
   ];
 
   time.timeZone = "Europe/Madrid";
