@@ -14,8 +14,8 @@
       password = "$MONERO_RPC_PASSWORD";
     };
     extraConfig = ''
-      prune-blockchain=1
       db-sync-mode=safe
+      prune-blockchain=1
     '';
     # envsubst replaces $MONERO_RPC_USER / $MONERO_RPC_PASSWORD at service start
     environmentFile = config.age.secrets.monero-rpc.path;
