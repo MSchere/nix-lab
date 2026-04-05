@@ -26,8 +26,6 @@ in {
     '';
   };
 
-  users.users.root.shell = pkgs.bash;
-
   users.users.spending-tracker = {
     isSystemUser = true;
     group = "spending-tracker";
@@ -62,7 +60,7 @@ in {
     };
     script = ''
       cd ${appDir}/.next/standalone
-      exec ${pkgs.nodejs_22}/bin/node server.js
+      exec ${pkgs.nodejs_24}/bin/node server.js
     '';
   };
 

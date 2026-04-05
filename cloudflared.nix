@@ -22,6 +22,7 @@
         "demo.tiponero.org" = "http://127.0.0.1:3001";
         "tiponero.org"      = "http://127.0.0.1:80";
         "www.tiponero.org"  = "http://127.0.0.1:80";
+        "docs.tiponero.org" = "http://127.0.0.1:80";
       };
       default = "http_status:404";
     };
