@@ -5,6 +5,7 @@
     wantedBy = [ "multi-user.target" ];
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
+    path = [ pkgs.bash pkgs.coreutils pkgs.git pkgs.nodejs_24 ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
