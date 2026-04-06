@@ -6,6 +6,12 @@
     group = "monero";
   };
 
+  age.secrets.wallet-password = {
+    file = ./secrets/wallet-password.age;
+    mode = "0400";
+    owner = "monero";
+  };
+
   services.monero = {
     enable = true;
     rpc = {
@@ -34,11 +40,11 @@
         exec ${pkgs.monero-cli}/bin/monero-wallet-rpc \
           --rpc-bind-ip=127.0.0.1 \
           --rpc-bind-port=18083 \
-          --rpc-login="$MONERO_RPC_USER:$MONERO_RPC_PASSWORD" \
+	  --rpc-login "$MONERO_RPC_USER:$MONERO_RPC_PASSWORD" \
+	  --daemon-login "$MONERO_RPC_USER:$MONERO_RPC_PASSWORD" \
           --daemon-address=127.0.0.1:18081 \
-          --daemon-login="$MONERO_RPC_USER:$MONERO_RPC_PASSWORD" \
           --wallet-file=/var/lib/monero/wallet \
-          --password-file=/var/lib/monero/wallet.passwd \
+	  --password-file ${config.age.secrets.wallet-password.path} \
           --non-interactive
       '';
       Restart = "on-failure";

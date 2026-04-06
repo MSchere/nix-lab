@@ -111,11 +111,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775397552,
-        "narHash": "sha256-skUFgWqaHU2+p/AQjR44MP9cCXBonKTZFRCS+iMgnWw=",
+        "lastModified": 1775428862,
+        "narHash": "sha256-rPafxkjEMMmwOloO4qRmREfltzUt/6sL8P+1tOfOKeo=",
         "owner": "tiponero",
         "repo": "tiponero-core",
-        "rev": "c5e7b688418abec490ad335e001075e3051be943",
+        "rev": "a8b7d49099f16151f069de23c78d8904c87a17b7",
         "type": "github"
       },
       "original": {
